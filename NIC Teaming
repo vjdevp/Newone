@@ -1,0 +1,33 @@
+NIC Teaming are five types 
+1.broadcast 2.round robbin 3.active backup 4.loadbalance 5.lacp
+## dnf install teamd
+##rpm -qa |grep teamd
+##nmcli connection show {nmcli :- Network Manager Command Line Interface}
+##ip adder show
+##nmcli connection delete 
+=====exp nmcli connection delete d7ad4bca-a0da-3c71-b21f-51c89aa0511d======
+##nmcli device status
+##nmcli connection add type team con-name team0 ifname team0 config '{"runner ": {"name": "activebackup"}}'
+## nmcli connection show team0
+##nmcli connection modify team0 ipv4.addresses 192.168.0.154/24
+##nmcli connection modify team0 ipv4.gateway 192.168.0.154/24
+##nmcli connection modify team0 ipv4.dns 192.168.0.154/24
+##nmcli connection modify team0 ipv4.method manua
+##nmcli connection modify team0 ipv4.autoconnect yes
+##nmcli connection add type team-slave con-name team0-port0 ifname enp0s3 team0
+##nmcli connection add type team-slave con-name team0-port1 ifname enp0s8 team0
+## nmcli connection show
+## nmcli connection down team0
+## nmcli connection up team0
+## ping google.com
+## ip a s 
+##teamdctl team0 state
+##nmcli device disconnect ens33
+##nmcli connection delete team0 --> for delete 
+
+
+
+
+
+
+
