@@ -1,1 +1,54 @@
+Identify Patch Requirements
+
+Determine the type of update:
+
+Security update
+Bug fix
+Performance improvement
+Kernel update
+==================================
+##cat /etc/redhat-release
+==================================
+Check Red Hat release notes and advisories for:
+Compatibility issues
+Known bugs
+System dependencies
+>> use the below link ## https://access.redhat.com/security/security-updates
+======================================
+
+====Backup Critical Data======
+/etc – Configuration files
+/var – Log files
+/home – User data
+/boot – Bootloader files
+tar -cvpzf /backup/full-backup-$(date +%F).tar.gz --exclude=/backup --one-file-system /
+
+=================================
+1.4. Schedule Downtime
+Communicate with stakeholders and schedule the update during a maintenance window.
+Confirm whether a reboot will be required (for kernel updates)
+=================================
+##sudo yum check-update
+##sudo yum update -y
+##sudo yum update --security -y
+##sudo yum update kernel -y
+##rpm -q kernel
+============================
+Post-Update Validation
+##dmesg | grep -i error
+##journalctl -b | grep -i error
+=============================
+Check Service Status
+##sudo systemctl list-units --state=failed
+##sudo systemctl status network
+=============================
+Roll Back Package Updates
+##yum history
+##sudo yum history undo <transaction-ID>
+##sudo yum history undo 45 {EXP}
+
+
+
+
+
 
