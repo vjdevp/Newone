@@ -55,6 +55,4 @@ Example:
    sudo reboot
    ```
 
-This ensures your system boots with the old kernel and removes any problematic updates.  
 
-Do you need additional steps, such as checking for dependencies or using `dnf` instead of `yum`?
