@@ -1,0 +1,43 @@
+Install Openscap in Ubuntu 22
+ 
+Install openscap scanner → apt install -y libopenscap8
+
+Download the scap-security-guide Zip file 
+
+wget https://sourceforge.net/projects/scap-security-guide.mirror/files/v0.1.75/scap-security-guide-0.1.75.zip
+
+unzip the file → unzip scap-security-guide-0.1.75.zip
+
+Run the scan command for evaluating CIS profile:
+
+oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_level2_server  --report /home/ubuntu/scan_ubuntu.22.html /usr/share/xml/scap/ssg/content/ssg-ubuntu2204-ds.xml
+
+oscap xccdf eval --remediate xccdf_org.ssgproject.content_profile_cis_level2_server  --report /home/ubuntu/scan_AR_ubuntu.22.html /usr/share/xml/scap/ssg/content/ssg-ubuntu2204-ds.xml
+=================================
+
+
+Install OpenSCAP on CentOs
+Install the necessary OpenSCAP packages:
+yum install openscap-scanner -y 
+ yum install scap-security-guide -y 
+
+Backup and Modify SSH Configuration
+Before performing an OpenSCAP scan, backup the SSH configuration file.
+
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+Modify SSH Configuration
+
+If required, edit the SSH configuration file to uncomment and confirm that port 22 is enabled:
+vi /etc/ssh/sshd_config
+
+Restart and Verify SSH Service
+After making changes, check the status of the SSH service:
+systemctl status sshd.service
+systemctl restart sshd.service
+
+Step 4: Perform OpenSCAP Scan
+Run the scan command for evaluating CIS profile:
+oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis --results scan_results.xml --report 192.168.1.67.html /usr/share/xml/scap/ssg/content/ssg-cs9-ds.xml
+Remediation command after scan 
+oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis --results scan_results_AR.xml --report 192.168.1.67_AR.html /usr/share/xml/scap/ssg/content/ssg-cs9-ds.xml
+
