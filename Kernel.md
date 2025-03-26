@@ -54,5 +54,7 @@ Example:
    ```bash
    sudo reboot
    ```
+![image](https://github.com/user-attachments/assets/3ced1fa1-1628-4874-a231-b3ec3bd84cf1)
+
 
 
