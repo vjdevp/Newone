@@ -1,0 +1,36 @@
+
+https://www.youtube.com/watch?v=JHAMj2vN2oU&t=556s
+
+nmap -V
+nmap -v
+nmap -vv
+nmap 192.168.56.1 (just exp)
+nmap 192.168.56.1 192.168.56.2  192.168.56.3
+nmap 192.168.56.0/24 --> it will scan entair subnet
+
+nmap 192.168.56.1-10  --> to scan range of ip address
+
+nmap -iL ip.txt --> u will make a text file for list of all ip address at a time to scan
+
+nmap 192.168.56.0/24 --exclude 192.168.56.5
+
+nmap -F 192.168.56.0/24 --excludefile ip.txt
+
+nmap -e eth0 192.168.56.44
+
+nmap -6 ip address ---> for to scan ipV6 ip address
+
+nmap -iR 3
+
+nmap --reason 192.168.56.44
+
+nmap --open 192.168.56.44
+nmap --packet-trace 192.168.56.44
+nmap -F 192.168.56.1 --> its for to scan open ports
+nmap -p 2232 192.168.56.1 --> its for port scan
+nmap -p 2232,8080,544,50-1000 192.168.56.1
+nmap -p msrpc,ssh,http,apex-mesh 192.168.56.1
+nmap -p "*" 192.168.56.1
+nmap -sU -sT -p U:53,T:25 192.168.56.1
+nmap --top-ports 10 192.168.56.1
+
